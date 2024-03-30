@@ -9,18 +9,6 @@ public class Health : MonoBehaviour
     public GameObject[] platforms;
     [SerializeField] GameObject currentPlatform;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
@@ -43,8 +31,7 @@ public class Health : MonoBehaviour
                         currentPlatform = platforms[i - 1];
                         
                         transform.position = new Vector2(currentPlatform.transform.position.x, currentPlatform.transform.position.y + 1);
-                        Debug.Log("Platform " + currentPlatform.transform.position.x);
-                        Debug.Log("Player = " + transform.position.x);
+                        
                         break;
                     }
                     else
