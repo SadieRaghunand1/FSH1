@@ -63,25 +63,41 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.X))
         {
             
-            RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("NPC")); //Literally crying not working
-            if(hit.collider != null)
+            RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("NPC")); 
             {
                 
                 NonPlayerCharacter character = hit.collider.GetComponent<NonPlayerCharacter>();
                 if(character != null)
                 {
-                    character.DisplayDialog();
+                    if(character.inDialog == false)
+                    {
+                        character.DisplayDialog();
+                    } 
+                    else if(character.inDialog == true)
+                    {
+                        ;
+                    }
+                    
+                    
                 }
             }
 
-            RaycastHit2D hit1 = Physics2D.Raycast(rb.position + Vector2.up * 0.2f, lookDirection2, 1.5f, LayerMask.GetMask("NPC")); //Literally crying not working
+            RaycastHit2D hit1 = Physics2D.Raycast(rb.position + Vector2.up * 0.2f, lookDirection2, 1.5f, LayerMask.GetMask("NPC")); 
             if (hit1.collider != null)
             {
 
                 NonPlayerCharacter character = hit1.collider.GetComponent<NonPlayerCharacter>();
                 if (character != null)
                 {
-                    character.DisplayDialog();
+                    if (character.inDialog == false)
+                    {
+                        character.DisplayDialog();
+                    }
+                    else if (character.inDialog == true)
+                    {
+                        ;
+                    }
+
                 }
             }
         }
