@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce;
     private Vector2 lookDirection = new Vector2(1, 0);
     private Vector2 lookDirection2 = new Vector2(-1, 0);
+    public Animator animator;
+    private float currentXPos;
+    private float newXPos;
     //private Vector2 jumpDirection;
 
     // Start is called before the first frame update
@@ -45,7 +48,35 @@ public class PlayerController : MonoBehaviour
         //Too slide-y
         rb.AddForce(Vector2.right * _direction * speed);
 
-        
+        currentXPos = transform.position.x;
+        newXPos = transform.position.x - currentXPos;
+
+        #region ANIM TEST
+        if(_direction.x > 0)
+        {
+            animator.SetBool("MoveLeft", false);
+            animator.SetBool("IsIdle", false);
+            animator.SetBool("FaceLeft", false);
+        }
+        else if(_direction.x < 0) 
+        {
+            animator.SetBool("MoveLeft", true);
+            animator.SetBool("IsIdle", false);
+            animator.SetBool("FaceLeft", true);
+        }
+        else if(_direction.x == 0)
+        {
+            animator.SetBool("IsIdle", true);
+            animator.SetBool("MoveLeft", false);
+            
+        }
+        #endregion
+
+        //animator.SetFloat("Test", _direction.x);
+        //animator.SetFloat("Test", newXPos);
+
+
+
     }
 
     private void Jump()
