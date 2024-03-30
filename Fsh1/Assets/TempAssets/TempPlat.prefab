@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4161356590231577520}
   - component: {fileID: 2059730863953579392}
   - component: {fileID: 2059730863953579391}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TempPlat
   m_TagString: Untagged
   m_Icon: {fileID: 0}

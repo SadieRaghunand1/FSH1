@@ -38,8 +38,24 @@ public class Health : MonoBehaviour
             {
                 if (platforms[i] == currentPlatform)
                 {
-                    currentPlatform = platforms[i - 1];
-                    //transform.Translate()
+                    if (i - 1 != -1)
+                    {
+                        currentPlatform = platforms[i - 1];
+                        
+                        transform.position = new Vector2(currentPlatform.transform.position.x, currentPlatform.transform.position.y + 1);
+                        Debug.Log("Platform " + currentPlatform.transform.position.x);
+                        Debug.Log("Player = " + transform.position.x);
+                        break;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    
+                }
+                else
+                {
+                    continue;
                 }
             }
 
