@@ -12,8 +12,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 lookDirection = new Vector2(1, 0);
     private Vector2 lookDirection2 = new Vector2(-1, 0);
     public Animator animator;
-    private float currentXPos;
-    private float newXPos;
+    private bool isGrounded;
     //private Vector2 jumpDirection;
 
     // Start is called before the first frame update
@@ -31,11 +30,15 @@ public class PlayerController : MonoBehaviour
         NPCTextBox();
     }
 
-    private void FixedUpdate()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-       //MoveCharacter(movement);
-        
+        if(collision.gameObject.layer == 7)
+        {
+            isGrounded = true;
+            animator.SetBool("IsJumping", false);
+        }
     }
+    
 
     private void InitValues()
     {
@@ -48,9 +51,7 @@ public class PlayerController : MonoBehaviour
         //Too slide-y
         rb.AddForce(Vector2.right * _direction * speed);
 
-        currentXPos = transform.position.x;
-        newXPos = transform.position.x - currentXPos;
-
+        
         #region ANIM TEST
         if(_direction.x > 0)
         {
@@ -85,6 +86,8 @@ public class PlayerController : MonoBehaviour
         {
             
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            isGrounded = false;
+            animator.SetBool("IsJumping", true);
         }
            
     }
