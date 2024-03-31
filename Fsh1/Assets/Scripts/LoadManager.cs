@@ -8,7 +8,7 @@ public class LoadManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+       // DontDestroyOnLoad(this.gameObject);
     }
 
     public void LoadGame()
@@ -19,12 +19,14 @@ public class LoadManager : MonoBehaviour
 
     public void LoadBeginingCutscene()
     {
+        Debug.Log("Clicked");
         SceneManager.LoadScene("1_BedroomCutscene");
     }
 
     public void LoadCredits()
     {
         SceneManager.LoadScene("3_Credits");
+        ReloadMenu();
     }
 
     public void LoadMenu()
@@ -32,14 +34,27 @@ public class LoadManager : MonoBehaviour
         SceneManager.LoadScene("0_MainMenu");
     }
 
-    public IEnumerator ReloadMenu()
+    public void ReloadMenu()
     {
-        yield return new WaitForSeconds(5f);
-        SceneManager.LoadScene("0_MainMenu");
+        StartCoroutine(DoubleReload());
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene("4_GameOver");
+        ReloadMenu();
+    }
+
+    public IEnumerator DoubleReload()
+    {
+        Debug.Log("In reload");
+        yield return new WaitForSeconds(5);
+        Debug.Log("After reload");
+        SceneManager.LoadScene("0_MainMenu");
     }
 }
