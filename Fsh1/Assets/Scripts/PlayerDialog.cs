@@ -47,22 +47,7 @@ public class PlayerDialog : MonoBehaviour
 
     }
 
-    /*public void NextLine()
-    {
-
-        if (index < dialog.Length - 1)
-        {
-            Debug.Log(index);
-            index++;
-            dialogText.text = string.Empty;
-            StartCoroutine(TypeString());
-        }
-        else if (index == dialog.Length - 1)
-        {
-            Debug.Log("End next line");
-            TimeDialogue();
-        }
-    }*/
+    
 
     public void TimeDialogue()
     {
@@ -89,4 +74,6 @@ public class PlayerDialog : MonoBehaviour
 
 
     }
+
+    //Player dialog restarts right after npc dialog stops, needs to not :)
 }
