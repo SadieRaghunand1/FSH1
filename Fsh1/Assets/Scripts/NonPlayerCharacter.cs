@@ -14,6 +14,8 @@ public class NonPlayerCharacter : MonoBehaviour
     public float textSpeed;
     private int index = 0;
     public bool inDialog = false;
+    public PlayerDialog playerDialog;
+    public PlayerController playerController; //Idk which of these last two variables we need but um something; for doing player dialogue 
 
     // Start is called before the first frame update
     void Start()
@@ -93,6 +95,7 @@ public class NonPlayerCharacter : MonoBehaviour
 
         inDialog = false;
         dialogBox.SetActive(false);
+        playerDialog.dialogBox.SetActive(false); //Trying to make it so player's dialogue does not repeat right after npc last line, alas, not working
     }
 
     public IEnumerator TypeString()

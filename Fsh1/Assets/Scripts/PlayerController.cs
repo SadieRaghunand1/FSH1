@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 lookDirection2 = new Vector2(-1, 0);
     public Animator animator;
     private bool isGrounded;
+    public PlayerDialog playerDialog;
     //private Vector2 jumpDirection;
 
     // Start is called before the first frame update
@@ -101,11 +102,13 @@ public class PlayerController : MonoBehaviour
             {
                 
                 NonPlayerCharacter character = hit.collider.GetComponent<NonPlayerCharacter>();
+                playerDialog.character = character; //use this reference to play the player's dialoge, THEN in that script start display dialog
                 if(character != null)
                 {
                     if(character.inDialog == false)
                     {
-                        character.DisplayDialog();
+                        playerDialog.DisplayDialog();  
+                        // character.DisplayDialog();
                     } 
                     else if(character.inDialog == true)
                     {
