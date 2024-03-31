@@ -31,7 +31,8 @@ public class EnemyMove : MonoBehaviour
     {
         if(transform.position.x == nextPoint.transform.position.x && transform.position.y == nextPoint.transform.position.y)
         {
-            
+            Debug.Log("Same pos as next pt");
+
             for(int i = 0; i < patrolPoints.Length; i++)
             {
                 if (patrolPoints[i] == nextPoint)
