@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     private bool isGrounded;
     public PlayerDialog playerDialog;
+    public bool test = false;
+    NonPlayerCharacter character;
     //private Vector2 jumpDirection;
 
     // Start is called before the first frame update
@@ -29,7 +32,12 @@ public class PlayerController : MonoBehaviour
         movement = new Vector2(Input.GetAxis("Horizontal"), 0);
         MoveCharacter(movement);
         Jump();
-        NPCTextBox();
+        //NPCTextBox();
+
+        if(test)
+        {
+            NPCTEX2();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -101,29 +109,41 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.X))
         {
+
+            //Literally gonna cry we were going to do this the smart way alas
             
-            RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("NPC")); 
+            RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.left * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("NPC")); 
             {
-                
-                NonPlayerCharacter character = hit.collider.GetComponent<NonPlayerCharacter>();
-                playerDialog.character = character; //use this reference to play the player's dialoge, THEN in that script start display dialog
-                if(character != null)
-                {
-                    if(character.inDialog == false)
+                //Debug.Log(hit.collider.gameObject.name); //HIT RETURNS NULL
+
+                //if(hit.collider.GetComponent<NonPlayerCharacter>() != null)
+                //{
+                    NonPlayerCharacter character = hit.collider.GetComponent<NonPlayerCharacter>();
+                    Debug.Log(character.gameObject.name);
+                    playerDialog.character = character; //use this reference to play the player's dialoge, THEN in that script start display dialog
+                    if (character != null)
                     {
-                        playerDialog.DisplayDialog();  
-                        // character.DisplayDialog();
-                    } 
-                    else if(character.inDialog == true)
-                    {
-                        ;
+                        if (character.inDialog == false)
+                        {
+                            playerDialog.DisplayDialog();
+                            // character.DisplayDialog();
+                        }
+                        else if (character.inDialog == true)
+                        {
+                            ;
+                        }
+
+
                     }
-                    
-                    
-                }
+               // }
+                /*else
+                {
+                    Debug.Log("SOBBING");
+                }*/
+                
             }
 
-            RaycastHit2D hit1 = Physics2D.Raycast(rb.position + Vector2.up * 0.2f, lookDirection2, 1.5f, LayerMask.GetMask("NPC")); 
+            RaycastHit2D hit1 = Physics2D.Raycast(rb.position + Vector2.left * 0.2f, lookDirection2, 1.5f, LayerMask.GetMask("NPC")); 
             if (hit1.collider != null)
             {
 
@@ -141,6 +161,47 @@ public class PlayerController : MonoBehaviour
 
                 }
             }
+
+
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        test = true;
+        if(collision.gameObject.layer == 8)
+        {
+            character = collision.gameObject.GetComponent<NonPlayerCharacter>();
+        }
+       
+    }
+
+
+    public void NPCTEX2()
+    {
+        
+            Debug.Log("Input");
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                Debug.Log("Kms");
+                
+                Debug.Log(character.gameObject.name);
+                playerDialog.character = character; //use this reference to play the player's dialoge, THEN in that script start display dialog
+                if (character != null)
+                {
+                    if (character.inDialog == false)
+                    {
+                        playerDialog.DisplayDialog();
+                        // character.DisplayDialog();
+                    }
+                    else if (character.inDialog == true)
+                    {
+                        ;
+                    }
+
+
+                }
+            }
+        
     }
 }
