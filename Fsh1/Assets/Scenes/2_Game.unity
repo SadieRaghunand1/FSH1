@@ -2328,7 +2328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.051689148, y: 13.911625, z: -10}
+  m_LocalPosition: {x: -0.00026512146, y: 2.7186737, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7415,7 +7415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6795618677608754691, guid: 046698d6071404f40bb64d3db3632278, type: 3}
       propertyPath: dialog.Array.data[1]
-      value: I beliece I saw something shiny further down
+      value: I believe I saw something shiny further down
       objectReference: {fileID: 0}
     - target: {fileID: 6795618677608754691, guid: 046698d6071404f40bb64d3db3632278, type: 3}
       propertyPath: dialog.Array.data[2]
@@ -10558,6 +10558,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1787073841123533829, guid: 0f8ccf878138af24594cc0375f3f0996, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1787073841200364133, guid: 0f8ccf878138af24594cc0375f3f0996, type: 3}
       propertyPath: m_Name
       value: Player
@@ -10566,6 +10570,18 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 470224234}
+    - target: {fileID: 1787073841200364135, guid: 0f8ccf878138af24594cc0375f3f0996, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1787073841200364152, guid: 0f8ccf878138af24594cc0375f3f0996, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1787073841200364153, guid: 0f8ccf878138af24594cc0375f3f0996, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: bc4abdff3b288bb4aaef98ad42d8d53b, type: 2}
     - target: {fileID: 1787073841200364155, guid: 0f8ccf878138af24594cc0375f3f0996, type: 3}
       propertyPath: m_RootOrder
       value: 128
