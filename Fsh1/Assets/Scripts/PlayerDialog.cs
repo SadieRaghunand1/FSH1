@@ -23,8 +23,14 @@ public class PlayerDialog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*if(dialogText.text == dialog)
+        {
+            Debug.Log("This was working yesterday :(");
+        }*/
+
         if (Input.GetKeyDown(KeyCode.X) && inDialog)
         {
+            Debug.Log("Input");
             if (dialogText.text == dialog)
             {
                 Debug.Log("x in dialog");
@@ -56,7 +62,7 @@ public class PlayerDialog : MonoBehaviour
         dialogText.text = string.Empty;
         index = 0;
 
-        inDialog = false;
+        //inDialog = false;
         dialogBox.SetActive(false);
         character.DisplayDialog();
     }
@@ -66,11 +72,16 @@ public class PlayerDialog : MonoBehaviour
         Debug.Log("In type string");
         dialogBox.SetActive(true);
         inDialog = true;
+        character.inDialog = true;
+        dialogText.text = string.Empty;
         foreach (char c in dialog.ToCharArray())
         {
             dialogText.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
+
+        Debug.Log(dialog);
+        Debug.Log(dialogText.text);
 
 
     }

@@ -93,7 +93,8 @@ public class NonPlayerCharacter : MonoBehaviour
         //yield return new WaitForSeconds(displayTime);
         index = 0;
 
-        inDialog = false;
+        StartCoroutine(WaitToStartAgain());
+
         dialogBox.SetActive(false);
         playerDialog.dialogBox.SetActive(false); //Trying to make it so player's dialogue does not repeat right after npc last line, alas, not working
     }
@@ -112,5 +113,11 @@ public class NonPlayerCharacter : MonoBehaviour
 
     }
 
+    public IEnumerator WaitToStartAgain()
+    {
+        yield return new WaitForSeconds(1.5f);
+        inDialog = false;
+        playerDialog.inDialog = false;
+    }
     
 }
