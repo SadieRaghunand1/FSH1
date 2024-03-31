@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 241555507963406974}
   - component: {fileID: 4386589636391196319}
   - component: {fileID: -838409060314832764}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wood7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b277b77cd331cc0479ad30ac7eaed2ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
